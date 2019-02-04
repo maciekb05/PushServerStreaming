@@ -1,14 +1,15 @@
-var io = {};
+const socketIo = require('socket.io');
+var io;
 
-export function initializeSocket(http) {
-    io = require('socket.io')(http);
+exports.initializeSocket = function initializeSocket(server) {
+    io = socketIo(server)
 } 
 
-export function notifyEveryone(eventName, eventObject) {
+exports.notifyEveryone = function notifyEveryone(eventName, eventObject) {
     io.emit(eventName, eventObject);
 }
 
-export function onEvent(eventName, callback) {
+exports.onEvent = function onEvent(eventName, callback) {
     io.on('connection', function(socket){
         socket.on(eventName, function(obj){
             callback(obj);
