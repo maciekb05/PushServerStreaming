@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Segment, Header, Grid, Divider, GridColumn, Label, Card } from "semantic-ui-react";
+import AddAdvertisement from "./AddAdvertisement";
 
 class Advertisement extends Component {
     render() {
         return (
             <Segment>
                 <div>
-                    <Header as="h3" style={{textAlign:"center"}}>{this.props.name}</Header>
+                    <Header as="h3" style={{textAlign:"center"}}>{this.props.subject}</Header>
                 </div>
                 
                 <Divider/>
@@ -23,20 +24,26 @@ class Advertisement extends Component {
                             header="Data wygaśnięcia"
                             description={this.props.expirationDate}
                         />
+                        <Card
+                            header="Email"
+                            description={this.props.email}
+                        />
                     </GridColumn>
                     <GridColumn width={4}>
                         <Card
                             header="Dodano przez"
-                            description={this.props.author}
+                            description={this.props.username}
                         />
                         <Card
                             header="Lokalizacja"
                             description={this.props.location}
                         />
+                        <Card
+                            header="Numer telefonu"
+                            description={this.props.phone}
+                        />
                     </GridColumn>
                 </Grid>
-                
-                
             </Segment>
         );
     }
