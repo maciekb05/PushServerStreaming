@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import socketIOClient from "socket.io-client";
+import socket from "@maciekb05/socket-lib-client";
+import { Container, Segment, Header, Icon } from "semantic-ui-react";
+import Advertisement from "./Advertisement";
+
 class App extends Component {
   constructor() {
     super();
@@ -10,12 +13,9 @@ class App extends Component {
     };
   }
 
-  socket= {};
-
   componentDidMount() {
-    const { endpoint } = this.state;
-    this.socket = socketIOClient(endpoint);
-    this.socket.on("message", msg => this.addMessage(msg));
+    socket.initializeSocket(this.state.endpoint);
+    socket.onEvent("message", msg => this.addMessage(msg))
   }
   addMessage(msg) {
     this.setState({
@@ -29,7 +29,7 @@ class App extends Component {
     });
   }
   sendMessage(msg) {
-    this.socket.emit('message', msg);
+    socket.sendEvent("message", msg);
   }
 
   handleChange = (event) => {
@@ -45,8 +45,8 @@ class App extends Component {
   }
 
   render() {
-    const { response } = this.state;
     return (
+
       <div style={{ textAlign: "center" }}>
         {this.renderMessages()}
 
@@ -58,6 +58,34 @@ class App extends Component {
       </form>
         
       </div>
+
+        // <Container className="ui container" style={{marginTop:10}}>
+        //     <Container>
+        //         <Segment>
+        //             <Segment>
+        //                 <Header as="h1"><Icon name="table"/>Tablica ogłoszeń</Header>
+        //             </Segment>
+        //             <Segment>
+        //                 <Advertisement 
+        //                     name="Kupię opla"
+        //                     description="Kupie opla Corse, 2000. Taki żeby jechał i z ważnym przeglądem."
+        //                     additionDate="21.04.2014"
+        //                     expirationDate="31.02.2019"
+        //                     author="Brajan123"
+        //                     location="Kraków"
+        //                 />
+        //                 <Advertisement 
+        //                     name="Udzielę korepetycji C++, Java, JavaScript"
+        //                     description="Dla studentów pierwszego stopnia informatyki. W godzinach wieczornych. 100 zł / godzinę zegarową. Zapraszam!"
+        //                     additionDate="01.11.2017"
+        //                     expirationDate="13.12.2031"
+        //                     author="ProgramistaABC"
+        //                     location="Kraków, AGH"
+        //                 />
+        //             </Segment>
+        //         </Segment>
+        //     </Container>
+        // </Container>
     );
   }
 }
