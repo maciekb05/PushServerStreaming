@@ -58,12 +58,13 @@ class App extends Component {
       return <Advertisement
             description={data.description}
             expirationDate={expDate}
-            author={data.author}
+            username={data.username}
             email={data.email}
             location={data.location}
             phone={data.phone}
             additionDate={addDate}
             duration={data.duration}
+            subject={data.subject}
             />;
     });
   }
@@ -92,21 +93,21 @@ class App extends Component {
                     </Segment>
                     <Segment>
                         <Advertisement
-                            name="Kupię opla"
+                            subject="Kupię opla"
                             description="Kupie opla Corse, 2000. Taki żeby jechał i z ważnym przeglądem."
-                            additionDate="21.04.2014"
-                            expirationDate="31.02.2019"
-                            author="Brajan123"
+                            additionDate="21/04/2014"
+                            expirationDate="31/02/2019"
+                            username="Brajan123"
                             phone="519222333"
                             email="asd@qwe.pl"
                             location="Kraków"
                         />
                         <Advertisement
-                            name="Udzielę korepetycji C++, Java, JavaScript"
+                            subject="Udzielę korepetycji C++, Java, JavaScript"
                             description="Dla cycatych studentek pierwszego stopnia informatyki. W godzinach wieczornych ^^ . 100 zł / godzinę zegarową. Zapraszam!"
-                            additionDate="01.11.2017"
-                            expirationDate="13.12.2031"
-                            author="ProgramistaABC"
+                            additionDate="01/11/2017"
+                            expirationDate="13/12/2031"
+                            username="ProgramistaABC"
                             phone="111222333"
                             email="aaa@bbb.ccc"
                             location="Kraków, AGH"

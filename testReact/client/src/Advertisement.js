@@ -7,7 +7,7 @@ class Advertisement extends Component {
         return (
             <Segment>
                 <div>
-                    <Header as="h3" style={{textAlign:"center"}}>{this.props.name}</Header>
+                    <Header as="h3" style={{textAlign:"center"}}>{this.props.subject}</Header>
                 </div>
                 
                 <Divider/>
@@ -32,7 +32,7 @@ class Advertisement extends Component {
                     <GridColumn width={4}>
                         <Card
                             header="Dodano przez"
-                            description={this.props.author}
+                            description={this.props.username}
                         />
                         <Card
                             header="Lokalizacja"

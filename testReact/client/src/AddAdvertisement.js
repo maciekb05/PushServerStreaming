@@ -9,11 +9,12 @@ class AddAdvertisement extends React.Component {
         additionDate: '',
         expirationDate: '',
         email: '',
-        author: '',
+        username: '',
         location: '',
         phone: '',
-        duration: ''
-    }
+        duration: '',
+        subject:''
+    };
 
     close = () => {
         this.setState({
@@ -29,16 +30,17 @@ class AddAdvertisement extends React.Component {
 
     handleClick = async () => {
         console.log("clicked");
-        console.log(this.state)
+        console.log(this.state);
         await this.props.createAdvertisement({
             description: this.state.description,
             additionDate: this.state.additionDate,
             expirationDate: this.state.expirationDate,
             email: this.state.email,
-            author: this.state.author,
+            username: this.state.username,
             location: this.state.location,
             phone: this.state.phone,
-            duration: this.state.duration
+            duration: this.state.duration,
+            subject: this.state.subject
         });
         this.close();
     };
@@ -46,6 +48,12 @@ class AddAdvertisement extends React.Component {
     handleDescriptionChange = (e) => {
         this.setState({
             description: e.target.value
+        })
+    };
+
+    handleSubjectChange = (e) => {
+        this.setState({
+            subject: e.target.value
         })
     };
 
@@ -61,9 +69,9 @@ class AddAdvertisement extends React.Component {
         })
     };
 
-    handleAuthorChange = (e) => {
+    handleUsernameChange = (e) => {
         this.setState({
-            author: e.target.value
+            username: e.target.value
         })
     };
 
@@ -95,6 +103,10 @@ class AddAdvertisement extends React.Component {
                 <Modal.Content>
                     <form className="ui form">
                         <div className="field">
+                            <label>Tytuł</label>
+                            <input name="subject" type="text" value={this.state.subject} onChange={(e) => this.handleSubjectChange(e)} />
+                        </div>
+                        <div className="field">
                             <label>Czas trwania</label>
                             <input name="duration" type="number" max={21} value={this.state.duration} onChange={(e) => this.handleDurationChange(e)} />
                         </div>
@@ -104,7 +116,7 @@ class AddAdvertisement extends React.Component {
                         </div>
                         <div className="field">
                             <label>Username</label>
-                            <input name="author" type="text" value={this.state.author} onChange={(e) => this.handleAuthorChange(e)} />
+                            <input name="username" type="text" value={this.state.username} onChange={(e) => this.handleUsernameChange(e)} />
                         </div>
                         <div className="field">
                             <label>Lokalizacja</label>
