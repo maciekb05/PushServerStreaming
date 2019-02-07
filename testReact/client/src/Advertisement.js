@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Segment, Header, Grid, Divider, GridColumn, Label, Card } from "semantic-ui-react";
+import AddAdvertisement from "./AddAdvertisement";
 
 class Advertisement extends Component {
     render() {
@@ -23,6 +24,10 @@ class Advertisement extends Component {
                             header="Data wygaśnięcia"
                             description={this.props.expirationDate}
                         />
+                        <Card
+                            header="Email"
+                            description={this.props.email}
+                        />
                     </GridColumn>
                     <GridColumn width={4}>
                         <Card
@@ -33,10 +38,12 @@ class Advertisement extends Component {
                             header="Lokalizacja"
                             description={this.props.location}
                         />
+                        <Card
+                            header="Numer telefonu"
+                            description={this.props.phone}
+                        />
                     </GridColumn>
                 </Grid>
-                
-                
             </Segment>
         );
     }

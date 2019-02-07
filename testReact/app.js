@@ -12,9 +12,9 @@ const server = http.createServer(app);
 
 lib.initializeSocket(server);
 
-lib.onEvent("message",msg => {
-    lib.notifyEveryone('message', msg);
-})
+lib.onEvent("advertisement",data => {
+    lib.notifyEveryone("advertisement", data);
+});
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
 
