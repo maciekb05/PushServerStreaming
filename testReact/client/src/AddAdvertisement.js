@@ -1,91 +1,123 @@
 import React from 'react';
 import { Modal } from 'semantic-ui-react';
-import Advertisement from "./Advertisement";
 
 class AddAdvertisement extends React.Component {
     state = {
         open: false,
         description: '',
-        additionDate: '',
-        expirationDate: '',
         email: '',
         username: '',
         location: '',
         phone: '',
         duration: '',
-        subject:''
-    };
+        subject: ''
+    }
 
     close = () => {
         this.setState({
             open: false
-        })
-    };
+        });
+    }
 
     open = () => {
         this.setState({
             open: true
-        })
-    };
+        });
+    }
+
+    todayDate() {
+        let date = new Date();
+
+        let dd = date.getDate();
+        let mm = date.getMonth() + 1;
+        let yyyy = date.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        return dd + '/' + mm + '/' + yyyy;
+    }
+
+    daysAfterToday(days) {
+        let today = new Date();
+
+        today.setDate(today.getDate() + parseInt(days));
+
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+        let yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
+        return dd + '/' + mm + '/' + yyyy;
+    }
 
     handleClick = async () => {
-        console.log("clicked");
-        console.log(this.state);
         await this.props.createAdvertisement({
             description: this.state.description,
-            additionDate: this.state.additionDate,
-            expirationDate: this.state.expirationDate,
+            additionDate: this.todayDate(),
+            expirationDate: this.daysAfterToday(this.state.duration),
             email: this.state.email,
             username: this.state.username,
             location: this.state.location,
             phone: this.state.phone,
-            duration: this.state.duration,
             subject: this.state.subject
         });
         this.close();
-    };
+    }
 
     handleDescriptionChange = (e) => {
         this.setState({
             description: e.target.value
-        })
-    };
+        });
+    }
 
     handleSubjectChange = (e) => {
         this.setState({
             subject: e.target.value
-        })
-    };
+        });
+    }
 
     handleDurationChange = (e) => {
         this.setState({
             duration: e.target.value
-        })
-    };
+        });
+    }
 
     handleEmailChange = (e) => {
         this.setState({
             email: e.target.value
-        })
-    };
+        });
+    }
 
     handleUsernameChange = (e) => {
         this.setState({
             username: e.target.value
-        })
-    };
+        });
+    }
 
     handleLocationChange = (e) => {
         this.setState({
             location: e.target.value
-        })
-    };
+        });
+    }
 
     handlePhoneChange = (e) => {
         this.setState({
             phone: e.target.value
-        })
-    };
+        });
+    }
 
     render() {
         return (
@@ -94,8 +126,12 @@ class AddAdvertisement extends React.Component {
                 open={this.state.open}
                 onClose={() => this.close()}
                 trigger={
-                    <button className="circular ui icon button blue" data-tooltip="Dodaj ogłoszenie" onClick={() => this.open()}>
-                        <i className="icon plus large"></i>
+                    <button 
+                        className="circular ui icon button blue" 
+                        data-tooltip="Dodaj ogłoszenie" 
+                        onClick={() => this.open()}
+                    >
+                        <i className="icon plus large" />
                     </button>
                 }
             >
