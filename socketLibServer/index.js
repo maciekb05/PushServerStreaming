@@ -2,6 +2,7 @@ const DBFactory = require("./database/DBFactory");
 const socketIo = require('socket.io');
 var io;
 let dataBase;
+
 class Facade {
     constructor() {
         console.log("Facade just created");
@@ -9,14 +10,19 @@ class Facade {
 
     initializeSocket(server, dbString, eventSchema) {
         io = socketIo(server);
+
+        // tutaj chyba powinien byc switch - case na podstawie dbString
+        // na robienie roznych fabryk konkretnych
+        // odpowiedzialnych za Mongo, Postgre itd...
         let factory = new DBFactory();
+
         dataBase = factory.CreateDb(dbString,eventSchema);
         dataBase.Connect();
-    };
+    }
 
     notifyEveryone(eventName, eventObject) {
         io.emit(eventName, eventObject);
-    };
+    }
 
     onEvent(eventName, callback) {
         io.on('connection', function (socket) {
@@ -25,5 +31,6 @@ class Facade {
             });
         });
     }
-};
+}
+
 module.exports = new Facade();
