@@ -1,4 +1,4 @@
-
+let QueryBuilder = require('QueryBuilder');
 class SelectBuilder extends QueryBuilder{
 
     constructor(tablename){
@@ -18,3 +18,4 @@ class SelectBuilder extends QueryBuilder{
         this.finalQuery = "SELECT " + this.columns + " FROM " + this.tableName + ";";
     }
 }
+module.exports = SelectBuilder;
