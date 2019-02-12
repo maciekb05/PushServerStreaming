@@ -29,7 +29,7 @@ class InsertBuilder extends QueryBuilder{
     }
 
     buildQuery(){
-        this.finalQuery = "INSERT INTO " + this.tableName + " " + this.columnsString + " VALUES (" + this.values + ");";
+        this.finalQuery = "INSERT INTO " + this.tableName + " (" + this.columnsString + ") VALUES (" + this.values + ");";
     }
 }
 module.exports = InsertBuilder;
