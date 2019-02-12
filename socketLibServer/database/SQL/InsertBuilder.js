@@ -3,7 +3,8 @@ class InsertBuilder extends QueryBuilder{
 
     constructor(tablename){
         super(tablename);
-        this.values = '';
+        this.valuesString = '';
+        this.columnsString = '';
     }
 
     setTableName(tablename){
@@ -11,13 +12,24 @@ class InsertBuilder extends QueryBuilder{
         return this;
     }
 
-    setValues(values){
-        this.values = values;
+    setValues(jsonValues){
+        columnsString = ""
+        valuesString = "";
+        for (var key in jsonValues) {
+            columnsString += key + ', ';
+            if (! isNaN(jsonValues[key])) {
+                valuesString += jsonValues[key] + ', ';
+            } else {
+                valuesString += '\'' + jsonValues[key] + '\', ';
+            }
+        }
+        columnsString = columnsString.substr(0,columnsString.length-2);
+        valuesString = valuesString.substr(0,valuesString.length-2);
         return this;
     }
 
     buildQuery(){
-        this.finalQuery = "INSERT INTO " + this.tableName + "VALUES (" + this.values + ");";
+        this.finalQuery = "INSERT INTO " + this.tableName + " " + this.columnsString + " VALUES (" + this.values + ");";
     }
 }
 module.exports = InsertBuilder;
