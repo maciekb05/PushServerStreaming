@@ -1,4 +1,4 @@
-const MongoDB = require("./MongoDB");
+const MongoDB = require("./Mongo/MongoDB");
 let _instance;
 
 class DBFactory {
@@ -25,6 +25,9 @@ class DBFactory {
 
     isMongoString(url) {
         return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
+    }
+    ValidateSchema(eventSchema) { //sprawdzanie czy schemat jest poprawny
+
     }
 }
 

@@ -4,6 +4,7 @@
     "main": "index.js",
     "dependencies": {
         "mongodb": "^3.1.13",
+        "mongoose": "^5.4.11",
         "save": "^2.3.3",
         "socket.io": "^2.2.0"
     }
