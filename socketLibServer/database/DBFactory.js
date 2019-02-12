@@ -1,20 +1,31 @@
+const MongoDB = require("./MongoDB");
 let _instance;
 
-class DBFactory{
-    constructor(){
-        if(_instance){
+class DBFactory {
+    constructor() {
+        // tu chyba cos dziwnego sie dzieje, ale trzeba poczytac
+        // w ifie jest return w elsie nie ma
+        // te thisy sa dziwnie do instance dodawane
+        if (_instance) {
             return this;
-        }else{
+        } else {
             this.isDbCreated = false;
             _instance = this;
         }
     }
-    CreateDb = function (dbString, eventSchema) {
-        //isMongoString(dbString)
-        if(true){
+
+    CreateDb(dbString, eventSchema) {
+        // ten if chyba trzeba przeniesc do tworzenia fabryki konkrentnej
+        if (this.isMongoString(dbString)) {
             this.isDbCreated = true;
-            return new MongoDB(dbString,eventSchema);
+            return new MongoDB(dbString, eventSchema);
         }
+        return new MongoDB(dbString, eventSchema);
+    }
+
+    isMongoString(url) {
+        return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
     }
 }
-export {DBFactory}
+
+module.exports = DBFactory;

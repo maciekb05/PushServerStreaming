@@ -3,7 +3,10 @@ class Database{
         this.dbString = dbString;
         this.eventSchema = eventSchema;
     }
-    connect() {
+    
+    Connect() {
         throw new Error('You have to implement the method to connect');
     }
 }
+
+module.exports = Database;
