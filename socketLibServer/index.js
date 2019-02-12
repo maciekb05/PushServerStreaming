@@ -13,9 +13,6 @@ class Facade {
     initializeSocket(server, dbString, eventSchema) {
         io = socketIo(server);
 
-        // tutaj chyba powinien byc switch - case na podstawie dbString
-        // na robienie roznych fabryk konkretnych
-        // odpowiedzialnych za Mongo, Postgre itd...
         if (this.isMongoString(dbString)) {
             factory = new MongoFactory();
         } else if (this.isPostgresString(dbString)) {

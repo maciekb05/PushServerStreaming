@@ -13,23 +13,23 @@ class InsertBuilder extends QueryBuilder{
     }
 
     setValues(jsonValues){
-        columnsString = ""
-        valuesString = "";
+        this.columnsString = ''
+        this.valuesString = '';
         for (var key in jsonValues) {
-            columnsString += key + ', ';
+            this.columnsString += key + ', ';
             if (! isNaN(jsonValues[key])) {
-                valuesString += jsonValues[key] + ', ';
+                this.valuesString += jsonValues[key] + ', ';
             } else {
-                valuesString += '\'' + jsonValues[key] + '\', ';
+                this.valuesString += '\'' + jsonValues[key] + '\', ';
             }
         }
-        columnsString = columnsString.substr(0,columnsString.length-2);
-        valuesString = valuesString.substr(0,valuesString.length-2);
+        this.columnsString = this.columnsString.substr(0, this.columnsString.length-2);
+        this.valuesString = this.valuesString.substr(0, this.valuesString.length-2);
         return this;
     }
 
     buildQuery(){
-        this.finalQuery = "INSERT INTO " + this.tableName + " (" + this.columnsString + ") VALUES (" + this.values + ");";
+        return "INSERT INTO " + this.tableName + " (" + this.columnsString + ") VALUES (" + this.valuesString + ");";
     }
 }
 module.exports = InsertBuilder;
