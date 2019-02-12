@@ -8,10 +8,12 @@ class InsertBuilder extends QueryBuilder{
 
     setTableName(tablename){
         this.tableName = tablename;
+        return this;
     }
 
     setValues(values){
         this.values = values;
+        return this;
     }
 
     buildQuery(){

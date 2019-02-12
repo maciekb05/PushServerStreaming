@@ -18,7 +18,7 @@ class Facade {
         // odpowiedzialnych za Mongo, Postgre itd...
         if (this.isMongoString(dbString)) {
             factory = new MongoFactory();
-        } else {
+        } else if (this.isPostgresString(dbString)) {
             factory = new SQLFactory();
         }
 
@@ -41,6 +41,11 @@ class Facade {
     isMongoString(url) {
         return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
     }
+
+    isPostgresString(url) {
+        return url.match(/postgres(?:\+srv)?:\/\/.*/) !== null;
+    }
+
 }
 
 module.exports = new Facade();
