@@ -3,7 +3,7 @@ let _instance;
 class Database {
     constructor(dbString, eventSchema) {
         if (_instance) {
-            return this;
+            return _instance;
         } else {
             this.isDbCreated = false;
             _instance = this;
