@@ -1,6 +1,6 @@
 const express = require("express");
 const http = require("http");
-const lib = require("../socketLibServer/index");
+const lib = require("@maciekb05/socket-lib");
 
 const port = process.env.PORT || 4001;
 const index = require("./routes/index");
