@@ -1,60 +1,30 @@
-const MongoFactory = require("./database/AbstractFactory/MongoFactory");
-const SQLFactory = require("./database/AbstractFactory/SQLFactory");
-const socketIo = require('socket.io');
+const { NotInitialized } = require("./stateMachine");
 
-
-// default NotInitialized(initializeSocket -> Initialized), Initialized (connectDataBase -> Connected), Connected(notifyEveryone, onEvent)
-class Facade {
+//Facade
+class ServerPush {
     constructor() {
-        console.log("Facade just created");
+        this.state = new NotInitialized(this);
+    }
+
+    changeState(state) {
+        this.state = state;
     }
 
     initializeSocket(server) {
-        this.io = socketIo(server);
+        this.state.initializeSocket(server);
     }
 
     connectDataBase(dbString, eventSchema) {
-        if (isMongoString(dbString)) {
-            this.factory = new MongoFactory();
-        } else if (isPostgresString(dbString)) {
-            this.factory = new SQLFactory();
-        }
-
-        this.dataBase = this.factory.createDB(dbString, eventSchema);
-        this.dataBase.Connect();
-
-        this.dao = this.factory.createDAO(this.dataBase);
+        this.state.connectDataBase(dbString, eventSchema);
     }
 
     notifyEveryone(eventName, eventObject) {
-        this.io.emit(eventName, eventObject);
-        
-        try {
-            this.dao.AddEvent(eventObject);
-        } catch(e) {
-            console.log(e);
-        }
+        this.state.notifyEveryone(eventName, eventObject);
     }
 
     async onEvent(eventName, callback) {
-        const dao = this.dao;
-        this.io.on('connection', async function (socket) {
-            var history = await dao.FindEvents();
-            socket.on(eventName, function (obj) {
-                callback(obj);
-            });
-            socket.emit('history', history);
-        });
-
+        await this.state.onEvent(eventName, callback);
     }
 }
 
-function isMongoString(url) {
-    return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
-}
-
-function isPostgresString(url) {
-    return url.match(/postgres(?:\+srv)?:\/\/.*/) !== null;
-}
-
-module.exports = new Facade();
+module.exports = new ServerPush();

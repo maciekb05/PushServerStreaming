@@ -10,7 +10,8 @@ app.use(index);
 
 const server = http.createServer(app);
 
-lib.initializeSocket(server,
+lib.initializeSocket(server);
+lib.connectDataBase(
     "mongodb://admin:admin123@ds135156.mlab.com:35156/server_push_dev",
     {
         description: "String",
@@ -21,7 +22,8 @@ lib.initializeSocket(server,
         location: "String",
         phone: "String",
         subject: "String"
-    });
+    }
+);
 
 // lib.initializeSocket(server,
 //     "postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
