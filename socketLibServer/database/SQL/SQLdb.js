@@ -23,9 +23,9 @@ class SQLdb extends Database{
     }
 
     RegistrySchema() {
-        var res = this.client.query('CREATE TABLE events (' + this.CreateQueryString() + ');', (err, res) => {
-            //console.log(err ? err.stack : res.rows[0].message)
-        });
+        this.client.query('CREATE TABLE events (' + this.CreateQueryString() + ');')
+        .then(res => {console.log(res.rows); return res.rows;})
+        .catch(e => console.log(e.stack));
         
 
     }
