@@ -1,6 +1,7 @@
 const AbstractFactory = require("./AbstractFactory");
 const MongoDB = require("../Mongo/MongoDB");
 const MongoDAO = require("../Mongo/MongoDao");
+const validateMongoSchema = require("../Mongo/schemaValidator");
 
 class MongoFactory extends AbstractFactory {
     constructor() {
@@ -8,7 +9,11 @@ class MongoFactory extends AbstractFactory {
     }
 
     createDB (dbString, eventSchema) {
-        return new MongoDB(dbString, eventSchema);
+        if(validateMongoSchema(eventSchema)){
+            return new MongoDB(dbString, eventSchema);
+        } else {
+            throw new Error("Invalid schema");
+        }
     }
 
     createDAO (database) {

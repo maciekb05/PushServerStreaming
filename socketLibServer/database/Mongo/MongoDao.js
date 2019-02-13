@@ -6,21 +6,21 @@ class MongoDao extends EventObjectDao{
     constructor(database) {
         super(database);
     }
-    async FindEvents(){
+
+    async FindEvents() {
         try {
             let events = await Events.find({});
-            console.log("szukam iwentow")
             return events;
-        }catch (e) {
+        } catch (e) {
             console.log(e);
         }
     }
-    async AddEvent(_event){
+
+    async AddEvent(_event) {
         try {
             let event = new Events(_event);
-            console.log(event);
             await event.save();
-        }catch (e) {
+        } catch (e) {
             console.log(e);
         }
     }
