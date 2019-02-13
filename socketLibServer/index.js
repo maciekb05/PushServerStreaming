@@ -1,9 +1,6 @@
-const MongoFactory = require("./database/MongoFactory");
-const SQLFactory = require("./database/SQLFactory");
+const MongoFactory = require("./database/AbstractFactory/MongoFactory");
+const SQLFactory = require("./database/AbstractFactory/SQLFactory");
 const socketIo = require('socket.io');
-var io;
-let dataBase;
-let factory;
 
 class Facade {
     constructor() {
@@ -11,28 +8,37 @@ class Facade {
     }
 
     initializeSocket(server, dbString, eventSchema) {
-        io = socketIo(server);
+        this.io = socketIo(server);
 
         if (this.isMongoString(dbString)) {
-            factory = new MongoFactory();
+            this.factory = new MongoFactory();
         } else if (this.isPostgresString(dbString)) {
-            factory = new SQLFactory();
+            this.factory = new SQLFactory();
         }
 
-        dataBase = factory.CreateDb(dbString,eventSchema);
-        dataBase.Connect();
+        this.dataBase = this.factory.createDB(dbString,eventSchema);
+        this.dataBase.Connect();
+
+        this.dao = this.factory.createDAO(this.dataBase);
     }
 
     notifyEveryone(eventName, eventObject) {
-        io.emit(eventName, eventObject);
+        this.io.emit(eventName, eventObject);
+
+        //tutaj moze trzeba try'owac
+        
+        this.dao.AddEvent(eventObject);
     }
 
-    onEvent(eventName, callback) {
-        io.on('connection', function (socket) {
+    async onEvent(eventName, callback) {
+        let history = await this.dao.FindEvents();
+        this.io.on('connection', function (socket) {
             socket.on(eventName, function (obj) {
                 callback(obj);
             });
+            socket.emit('history',history);
         });
+
     }
 
     isMongoString(url) {

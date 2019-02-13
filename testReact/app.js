@@ -15,7 +15,31 @@ const server = http.createServer(app);
         innePole: "numer"
 }*/
 
-lib.initializeSocket(server,"mongodb://admin:admin123@ds223015.mlab.com:23015/mrowisko",null);
+lib.initializeSocket(server,
+                    "mongodb://admin:admin123@ds223015.mlab.com:23015/mrowisko",
+                    {
+                        description: "String",
+                        additionDate: "String",
+                        expirationDate: "String",
+                        email: "String",
+                        username: "String",
+                        location: "String",
+                        phone: "String",
+                        subject: "String"
+                    });
+
+// lib.initializeSocket(server,
+//     "postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
+//     {
+//         description: "varchar(255)",
+//         additionDate: "varchar(255)",
+//         expirationDate: "varchar(255)",
+//         email: "varchar(255)",
+//         username: "varchar(255)",
+//         location: "varchar(255)",
+//         phone: "varchar(255)",
+//         subject: "varchar(255)"
+//     });
 
 lib.onEvent("advertisement",data => {
     lib.notifyEveryone("advertisement", data);

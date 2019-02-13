@@ -12,7 +12,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        socket.initializeSocket(this.state.endpoint);
+        socket.initializeSocket(this.state.endpoint, (history) => this.addHistoryToState(history));
         socket.onEvent("advertisement", data => this.addAdvertisement(data));
     }
 
@@ -22,10 +22,17 @@ class App extends Component {
         });
     }
 
+    addHistoryToState(history) {
+        this.setState({
+            advertisements: this.state.advertisements.concat(history)
+        });
+    }
+
     renderAdvertisements() {
         return this.state.advertisements.map(advertisement => {
             return (
                 <Advertisement
+                    key = {advertisement.description + advertisement.additionDate}
                     description = {advertisement.description}
                     expirationDate = {advertisement.expirationDate}
                     username = {advertisement.username}
@@ -66,26 +73,6 @@ class App extends Component {
                             </Grid>
                         </Segment>
                         <Segment>
-                            <Advertisement
-                                subject="Kupię opla"
-                                description="Kupie opla Corse, 2000. Taki żeby jechał i z ważnym przeglądem."
-                                additionDate="21/04/2014"
-                                expirationDate="31/02/2019"
-                                username="Brajan123"
-                                phone="519222333"
-                                email="asd@qwe.pl"
-                                location="Kraków"
-                            />
-                            <Advertisement
-                                subject="Udzielę korepetycji C++, Java, JavaScript"
-                                description="Dla pierwszego stopnia informatyki. 100 zł / godzinę zegarową. Zapraszam!"
-                                additionDate="01/11/2017"
-                                expirationDate="13/12/2031"
-                                username="ProgramistaABC"
-                                phone="111222333"
-                                email="aaa@bbb.ccc"
-                                location="Kraków, AGH"
-                            />
                             {this.renderAdvertisements()}
                         </Segment>
                     </Segment>

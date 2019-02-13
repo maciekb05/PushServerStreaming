@@ -1,25 +1,26 @@
 const socketIo = require('socket.io-client');
-var io;
-
 
 class Facade {
     constructor () {
-        this.log("Facade just created");
+        console.log("Facade just created");
     }
 
-    initializeSocket = function initializeSocket(endpoint) {
-        io = socketIo(endpoint)
-    } 
+    initializeSocket(endpoint, historyCallback) {
+        this.io = socketIo(endpoint);
+        this.io.on('history', function(obj){
+            historyCallback(obj);
+        });
+    }
 
-    onEvent = function onEvent(eventName, callback) {
-        io.on(eventName, function(obj){
+    onEvent(eventName, callback) {
+        this.io.on(eventName, function(obj){
             callback(obj);
         });
     }
 
-    sendEvent = function sendEvent(eventName, eventObject) {
-        io.emit(eventName, eventObject);
+    sendEvent(eventName, eventObject) {
+        this.io.emit(eventName, eventObject);
     }
 }
 
-exports = new Facade();
+module.exports = new Facade();

@@ -1,7 +1,6 @@
 let mongoose = require('mongoose');
 let Database = require('../Database');
 require('./Event');
-let MongoDao = require('./MongoDao');
 let DynamicSchema = require('mongoose-dynamic-schemas');
 let Event = mongoose.model('events');
 
@@ -15,18 +14,18 @@ class MongoDB extends  Database{
             await mongoose.connect(this.dbString,{useNewUrlParser: true});
             console.log("Connected to MongoDB");
             await this._RegisterNewSchema();
-        }catch(err){
-             console.error('Database connection error');
-         }
+        } catch(err) {
+            console.error('Database connection error');
+        }
 
     }
-    async _RegisterNewSchema(){
+    async _RegisterNewSchema() {
         try {
             await Object.keys(this.eventSchema).forEach(async key => {
                 await DynamicSchema.addSchemaField(Event,key,{type: this.eventSchema[key]});
             });
             console.log("Mongo Schema registred");
-        }catch (e) {
+        } catch (e) {
             console.log(e);
         }
     }

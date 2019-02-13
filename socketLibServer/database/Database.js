@@ -1,7 +1,15 @@
-class Database{
-    constructor(dbString, eventSchema){
-        this.dbString = dbString;
-        this.eventSchema = eventSchema;
+let _instance;
+
+class Database {
+    constructor(dbString, eventSchema) {
+        if (_instance) {
+            return this;
+        } else {
+            this.isDbCreated = false;
+            _instance = this;
+            this.dbString = dbString;
+            this.eventSchema = eventSchema;
+        }
     }
     
     Connect() {

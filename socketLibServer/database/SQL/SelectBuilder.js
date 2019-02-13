@@ -1,4 +1,4 @@
-let QueryBuilder = require('QueryBuilder');
+let QueryBuilder = require('./QueryBuilder');
 class SelectBuilder extends QueryBuilder{
 
     constructor(tablename){
