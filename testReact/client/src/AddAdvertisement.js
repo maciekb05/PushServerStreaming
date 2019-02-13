@@ -66,8 +66,8 @@ class AddAdvertisement extends React.Component {
     handleClick = async () => {
         await this.props.createAdvertisement({
             description: this.state.description,
-            additionDate: this.todayDate(),
-            expirationDate: this.daysAfterToday(this.state.duration),
+            additiondate: this.todayDate(),
+            expirationdate: this.daysAfterToday(this.state.duration),
             email: this.state.email,
             username: this.state.username,
             location: this.state.location,

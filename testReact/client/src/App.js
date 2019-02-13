@@ -38,14 +38,14 @@ class App extends Component {
         return this.state.advertisements ? this.state.advertisements.map(advertisement => {
             return (
                 <Advertisement
-                    key = {advertisement.description + advertisement.additionDate}
+                    key = {advertisement.description + advertisement.additiondate}
                     description = {advertisement.description}
-                    expirationDate = {advertisement.expirationDate}
+                    expirationDate = {advertisement.expirationdate}
                     username = {advertisement.username}
                     email = {advertisement.email}
                     location = {advertisement.location}
                     phone = {advertisement.phone}
-                    additionDate = {advertisement.additionDate}
+                    additionDate = {advertisement.additiondate}
                     duration = {advertisement.duration}
                     subject = {advertisement.subject}
                 />

@@ -2,17 +2,21 @@ const MongoFactory = require("./database/AbstractFactory/MongoFactory");
 const SQLFactory = require("./database/AbstractFactory/SQLFactory");
 const socketIo = require('socket.io');
 
+
+// default NotInitialized(initializeSocket -> Initialized), Initialized (connectDataBase -> Connected), Connected(notifyEveryone, onEvent)
 class Facade {
     constructor() {
         console.log("Facade just created");
     }
 
-    initializeSocket(server, dbString, eventSchema) {
+    initializeSocket(server) {
         this.io = socketIo(server);
+    }
 
-        if (this.isMongoString(dbString)) {
+    connectDataBase(dbString, eventSchema) {
+        if (isMongoString(dbString)) {
             this.factory = new MongoFactory();
-        } else if (this.isPostgresString(dbString)) {
+        } else if (isPostgresString(dbString)) {
             this.factory = new SQLFactory();
         }
 
@@ -24,10 +28,12 @@ class Facade {
 
     notifyEveryone(eventName, eventObject) {
         this.io.emit(eventName, eventObject);
-
-        //tutaj moze trzeba try'owac
-
-        this.dao.AddEvent(eventObject);
+        
+        try {
+            this.dao.AddEvent(eventObject);
+        } catch(e) {
+            console.log(e);
+        }
     }
 
     async onEvent(eventName, callback) {
@@ -37,21 +43,18 @@ class Facade {
             socket.on(eventName, function (obj) {
                 callback(obj);
             });
-            console.log("wysylam historie");
-            console.log(history);
             socket.emit('history', history);
         });
 
     }
+}
 
-    isMongoString(url) {
-        return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
-    }
+function isMongoString(url) {
+    return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
+}
 
-    isPostgresString(url) {
-        return url.match(/postgres(?:\+srv)?:\/\/.*/) !== null;
-    }
-
+function isPostgresString(url) {
+    return url.match(/postgres(?:\+srv)?:\/\/.*/) !== null;
 }
 
 module.exports = new Facade();
