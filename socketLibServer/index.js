@@ -6,7 +6,7 @@ class ServerPush {
         this.state = new NotInitialized(this);
     }
 
-    changeState(state) {
+    _changeState(state) {
         this.state = state;
     }
 

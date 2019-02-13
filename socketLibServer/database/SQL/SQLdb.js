@@ -15,8 +15,6 @@ class SQLdb extends Database {
         } catch (err) {
             console.error(err);
         }
-        ;
-
     }
 
     async _RegisterNewSchema() {

@@ -33,7 +33,7 @@ class NotInitialized extends State {
 
     initializeSocket(server) {
         this.context.io = socketIo(server);
-        this.context.changeState(new Initialized(this.context));
+        this.context._changeState(new Initialized(this.context));
     }
 }
 
@@ -55,7 +55,7 @@ class Initialized extends State {
 
         this.context.dao = this.context.factory.createDAO(this.context.dataBase);
 
-        this.context.changeState(new Connected(this.context));
+        this.context._changeState(new Connected(this.context));
     }
 }
 

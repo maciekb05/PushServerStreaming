@@ -27,7 +27,7 @@ class NotInitialized extends State {
 
     initializeSocket(endpoint) {
         this.context.io = socketIo(endpoint);
-        this.context.changeState(new Initialized(this.context));
+        this.context._changeState(new Initialized(this.context));
     }
 }
 

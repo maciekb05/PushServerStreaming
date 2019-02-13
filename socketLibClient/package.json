@@ -1,6 +1,6 @@
 {
     "name": "@maciekb05/socket-lib-client",
-    "version": "10.0.0",
+    "version": "11.0.0",
     "main": "index.js",
     "dependencies": {
         "socket.io-client": "^2.2.0"

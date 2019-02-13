@@ -1,11 +1,12 @@
 const { NotInitialized } = require("./stateMachine");
 
+//Facade
 class ServerPush {
     constructor() {
         this.state = new NotInitialized(this);
     }
 
-    changeState(state) {
+    _changeState(state) {
         this.state = state;
     }
 
