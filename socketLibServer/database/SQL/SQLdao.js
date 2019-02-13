@@ -13,7 +13,9 @@ class SQLdao extends EventObjectDao {
         insertBuilder.setTableName('events');
         insertBuilder.setValues(event);
         console.log(insertBuilder.buildQuery());
-        this._database.client.query(insertBuilder.buildQuery());
+        this._database.client.query(insertBuilder.buildQuery())
+        .then(res => {console.log(res.row);})
+        .catch(e => console.log(e.stack))
     }
 
     FindEvents() {
@@ -22,7 +24,7 @@ class SQLdao extends EventObjectDao {
         selectBuilder.setColumns('*');
         console.log(selectBuilder.buildQuery());
         this._database.client.query(selectBuilder.buildQuery())
-        .then(res => {console.log(res.row); return res.rows;})
+        .then(res => {console.log(res.rows); return res.rows;})
         .catch(e => console.log(e.stack))
     }
 }

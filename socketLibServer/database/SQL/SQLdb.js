@@ -15,19 +15,17 @@ class SQLdb extends Database{
         this.client.connect()
             .then(() => {
                 console.log("Connected to SQL");
-                this.RegistrySchema();
+                return null;
             })
             .catch(err => {
                 console.error('Database connection error');
             });
+        this.RegistrySchema();
+
     }
 
     RegistrySchema() {
-        this.client.query('CREATE TABLE events (' + this.CreateQueryString() + ');')
-        .then(res => {console.log(res.rows); return res.rows;})
-        .catch(e => console.log(e.stack));
-        
-
+        this.client.query('CREATE TABLE events (' + this.CreateQueryString() + ');');
     }
 
     CreateQueryString() {

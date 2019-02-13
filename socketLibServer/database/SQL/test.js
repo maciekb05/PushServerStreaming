@@ -5,7 +5,7 @@ let SQLdao = require("./SQLdao");
 
 
 let SQLdb = require('./SQLdb');
-let SQLFactory = require('../SQLFactory');
+let SQLFactory = require('../AbstractFactory/SQLFactory');
 
 let schema = {
     Opis: 'varchar(255)',
@@ -29,12 +29,18 @@ let event2 = {
 let factory = new SQLFactory();
         
 
-let dataBase = factory.CreateDb("postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
+let dataBase = factory.createDB("postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
                                     schema);
 dataBase.Connect();
 
-let dao = factory.createDAO(dataBase);
-dao.AddEvent(event);
-dao.AddEvent(event1);
-dao.AddEvent(event2);
-dao.FindEvents();
+    let dao = factory.createDAO(dataBase);
+    dao.AddEvent(event);
+    dao.AddEvent(event1);
+    dao.AddEvent(event2);
+    dao.FindEvents();
+
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
