@@ -1,4 +1,4 @@
-let QueryBuilder = require('QueryBuilder');
+let QueryBuilder = require('./QueryBuilder');
 class SelectBuilder extends QueryBuilder{
 
     constructor(tablename){
@@ -28,6 +28,9 @@ class SelectBuilder extends QueryBuilder{
     }
     
     getColumns(){
+        if (this.columns === '*') {
+            return this.columns;
+        }
         var arrayLength = this.columns.length;
         var result = '';
         for (var i = 0; i < arrayLength; i++) {
@@ -46,7 +49,7 @@ class SelectBuilder extends QueryBuilder{
         } else {
             this.finalQuery += ";";
         }
-        return this;
+        return this.finalQuery;
     }
     
     

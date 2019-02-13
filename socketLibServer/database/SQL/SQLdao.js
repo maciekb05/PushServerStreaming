@@ -20,6 +20,9 @@ class SQLdao extends EventObjectDao {
         let selectBuilder = new SelectBuilder();
         selectBuilder.setTableName('events');
         selectBuilder.setColumns('*');
+        this._database.client.query(selectBuilder.buildQuery())
+        .then(res => console.log(res.rows[0]))
+        .catch(e => console.error(e.stack))
     }
 }
 
