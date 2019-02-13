@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Events = mongoose.model('events');
 const EventObjectDao = require('../EventObjectDao');
-let mongooseDynamic = require('mongoose-dynamic-schemas');
 
 class MongoDao extends EventObjectDao{
     constructor(database) {
@@ -10,6 +9,7 @@ class MongoDao extends EventObjectDao{
     async FindEvents(){
         try {
             let events = await Events.find({});
+            console.log("szukam iwentow")
             return events;
         }catch (e) {
             console.log(e);
@@ -23,7 +23,6 @@ class MongoDao extends EventObjectDao{
         }catch (e) {
             console.log(e);
         }
-
     }
 }
 

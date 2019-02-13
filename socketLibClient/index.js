@@ -5,11 +5,8 @@ class Facade {
         console.log("Facade just created");
     }
 
-    initializeSocket(endpoint, historyCallback) {
+    initializeSocket(endpoint) {
         this.io = socketIo(endpoint);
-        this.io.on('history', function(obj){
-            historyCallback(obj);
-        });
     }
 
     onEvent(eventName, callback) {

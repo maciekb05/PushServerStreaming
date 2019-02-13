@@ -31,11 +31,14 @@ class Facade {
     }
 
     async onEvent(eventName, callback) {
-        let history = await this.dao.FindEvents();
-        this.io.on('connection', function (socket) {
+        const dao = this.dao;
+        this.io.on('connection', async function (socket) {
+            var history = await dao.FindEvents();
             socket.on(eventName, function (obj) {
                 callback(obj);
             });
+            console.log("wysylam historie");
+            console.log(history);
             socket.emit('history',history);
         });
 
