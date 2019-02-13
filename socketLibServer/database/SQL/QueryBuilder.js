@@ -5,5 +5,9 @@ class QueryBuilder {
         this.tableName = tablename;
         this.finalQuery = '';
     }
+
+    setTableName(tablename){}
+
+    buildQuery(){}
 }
 module.exports = QueryBuilder;

@@ -5,8 +5,9 @@
     "dependencies": {
         "mongodb": "^3.1.13",
         "mongoose": "^5.4.11",
-        "mongoose-dynamic-schemas": "^1.2.6",
+        "pg": "^7.8.0",
         "save": "^2.3.3",
-        "socket.io": "^2.2.0"
+        "socket.io": "^2.2.0",
+        "mongoose-dynamic-schemas": "^1.2.6"
     }
 }
