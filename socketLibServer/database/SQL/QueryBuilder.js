@@ -1,13 +1,17 @@
-
 class QueryBuilder {
 
-    constructor(tablename){
+    constructor(tablename) {
         this.tableName = tablename;
         this.finalQuery = '';
     }
 
-    setTableName(tablename){}
+    setTableName(tablename) {
+        throw new Error("Not implemented");
+    }
 
-    buildQuery(){}
+    buildQuery() {
+        throw new Error("Not implemented");
+    }
 }
+
 module.exports = QueryBuilder;

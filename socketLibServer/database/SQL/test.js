@@ -31,16 +31,10 @@ let factory = new SQLFactory();
 
 let dataBase = factory.createDB("postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
                                     schema);
-dataBase.Connect();
-
+dataBase.Connect().then(async () => {
     let dao = factory.createDAO(dataBase);
-    dao.AddEvent(event);
-    dao.AddEvent(event1);
-    dao.AddEvent(event2);
-    dao.FindEvents();
-
-
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+    await dao.AddEvent(event);
+    await dao.AddEvent(event1);
+    await dao.AddEvent(event2);
+    await dao.FindEvents();
+});

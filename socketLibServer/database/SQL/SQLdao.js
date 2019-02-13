@@ -5,27 +5,30 @@ let EventObjectDao = require('../EventObjectDao');
 class SQLdao extends EventObjectDao {
     constructor(database) {
         super(database);
-        
+
     }
 
-    AddEvent(event) {
+    async AddEvent(event) {
         let insertBuilder = new InsertBuilder();
         insertBuilder.setTableName('events');
         insertBuilder.setValues(event);
-        console.log(insertBuilder.buildQuery());
-        this._database.client.query(insertBuilder.buildQuery())
-        .then(res => {console.log(res.row);})
-        .catch(e => console.log(e.stack))
+        try {
+            await this._database.client.query(insertBuilder.buildQuery())
+        } catch (e) {
+            console.log(e);
+        }
     }
 
-    FindEvents() {
+    async FindEvents() {
         let selectBuilder = new SelectBuilder();
         selectBuilder.setTableName('events');
         selectBuilder.setColumns('*');
-        console.log(selectBuilder.buildQuery());
-        this._database.client.query(selectBuilder.buildQuery())
-        .then(res => {console.log(res.rows); return res.rows;})
-        .catch(e => console.log(e.stack))
+        try {
+            let res = await this._database.client.query(selectBuilder.buildQuery())
+            return res.rows;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 
