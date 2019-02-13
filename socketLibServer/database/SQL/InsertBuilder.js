@@ -1,4 +1,4 @@
-
+let QueryBuilder = require('./QueryBuilder');
 class InsertBuilder extends QueryBuilder{
 
     constructor(tablename){
@@ -18,3 +18,4 @@ class InsertBuilder extends QueryBuilder{
         this.finalQuery = "INSERT INTO " + this.tableName + "VALUES (" + this.values + ");";
     }
 }
+module.exports = InsertBuilder;

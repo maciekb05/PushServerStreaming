@@ -1,7 +1,9 @@
-const DBFactory = require("./database/DBFactory");
+const MongoFactory = require("./database/MongoFactory");
+const SQLFactory = require("./database/SQLFactory");
 const socketIo = require('socket.io');
 var io;
 let dataBase;
+let factory;
 
 class Facade {
     constructor() {
@@ -14,7 +16,11 @@ class Facade {
         // tutaj chyba powinien byc switch - case na podstawie dbString
         // na robienie roznych fabryk konkretnych
         // odpowiedzialnych za Mongo, Postgre itd...
-        let factory = new DBFactory();
+        if (this.isMongoString(dbString)) {
+            factory = new MongoFactory();
+        } else {
+            factory = new SQLFactory();
+        }
 
         dataBase = factory.CreateDb(dbString,eventSchema);
         dataBase.Connect();
@@ -30,6 +36,10 @@ class Facade {
                 callback(obj);
             });
         });
+    }
+
+    isMongoString(url) {
+        return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
     }
 }
 

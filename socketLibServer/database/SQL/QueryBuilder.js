@@ -6,3 +6,4 @@ class QueryBuilder {
         this.finalQuery = '';
     }
 }
+module.exports = QueryBuilder;

@@ -14,18 +14,8 @@ class DBFactory {
         }
     }
 
-    CreateDb(dbString, eventSchema) {
-        // ten if chyba trzeba przeniesc do tworzenia fabryki konkrentnej
-        if (this.isMongoString(dbString)) {
-            this.isDbCreated = true;
-            return new MongoDB(dbString, eventSchema);
-        }
-        return new MongoDB(dbString, eventSchema);
-    }
+    CreateDb(dbString, eventSchema) {}
 
-    isMongoString(url) {
-        return url.match(/mongodb(?:\+srv)?:\/\/.*/) !== null;
-    }
     ValidateSchema(eventSchema) { //sprawdzanie czy schemat jest poprawny
 
     }
