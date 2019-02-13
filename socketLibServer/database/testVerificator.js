@@ -1,4 +1,4 @@
-let validate = require("./schemaVarificator");
+let validate = require("./schemaValidator");
 
 console.log(validate({
     imie: "String",
