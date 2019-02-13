@@ -1,15 +1,15 @@
-let mongoose = require('mongoose');
-let Database = require('../Database');
+const mongoose = require('mongoose');
+const Database = require('../Database');
 require('./Event');
-let DynamicSchema = require('mongoose-dynamic-schemas');
-let Event = mongoose.model('events');
+const DynamicSchema = require('mongoose-dynamic-schemas');
+const Event = mongoose.model('events');
 
-class MongoDB extends  Database{
-    constructor(dbString, eventSchema){
+class MongoDB extends Database {
+    constructor(dbString, eventSchema) {
         super(dbString, eventSchema);
     }
 
-    async Connect(){
+    async Connect() {
         try {
             await mongoose.connect(this.dbString,{useNewUrlParser: true});
             console.log("Connected to MongoDB");
@@ -17,8 +17,8 @@ class MongoDB extends  Database{
         } catch(err) {
             console.error('Database connection error');
         }
-
     }
+
     async _RegisterNewSchema() {
         try {
             await Object.keys(this.eventSchema).forEach(async key => {

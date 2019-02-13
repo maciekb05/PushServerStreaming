@@ -12,8 +12,9 @@ class App extends Component {
     }
 
     componentDidMount() {
-        socket.initializeSocket(this.state.endpoint, (history) => this.addHistoryToState(history));
+        socket.initializeSocket(this.state.endpoint);
         socket.onEvent("advertisement", data => this.addAdvertisement(data));
+        socket.onEvent("history", (history) => this.addHistoryToState(history));
     }
 
     addAdvertisement(data) {

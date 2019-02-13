@@ -15,6 +15,10 @@ class Database {
     Connect() {
         throw new Error('You have to implement the method to connect');
     }
+
+    _RegisterNewSchema() {
+        throw new Error('You have to implement this method');
+    }
 }
 
 module.exports = Database;
