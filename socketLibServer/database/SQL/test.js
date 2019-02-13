@@ -1,13 +1,8 @@
 
 let InsertBuilder = require("./InsertBuilder");
 
-let ib = new InsertBuilder();
-ib.setTableName("Wydarzenia");
-ib.setValues({
-    nazwa: 'Hackaton',
-    godzina: 15
-});
-console.log(ib.buildQuery());
+let SQLdao = require("./SQLdao");
+
 
 let SQLdb = require('./SQLdb');
 
@@ -18,3 +13,10 @@ let schema = {
 
 let db = new SQLdb("postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
 schema);
+let dao = new SQLdao(db);
+let event = {
+    Opis: 'Taki no opis tu jest hehehe',
+    Data: 997
+};
+dao.AddEvent(event);
+

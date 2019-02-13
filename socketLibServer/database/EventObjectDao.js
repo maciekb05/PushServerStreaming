@@ -1,6 +1,12 @@
 let _instance = null;
 
 class EventObjectDao {
-    FindEvents();
-    AddEvent(Event);
+    constructor(database) {
+        this._database = database;
+        
+    }
+    FindEvents(){};
+    AddEvent(Event){};
 }
+
+module.exports = EventObjectDao;

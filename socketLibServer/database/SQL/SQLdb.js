@@ -10,6 +10,8 @@ class SQLdb extends Database{
         this.client = new pg.Client(dbString);
         this.Connect();
         this.RegistrySchema();
+
+
     }
 
     Connect() {
@@ -24,7 +26,8 @@ class SQLdb extends Database{
 
     RegistrySchema() {
         var res = this.client.query('CREATE TABLE events (' + this.CreateQueryString() + ');', (err, res) => {
-            console.log(err ? err.stack : res.rows[0].message)});
+            //console.log(err ? err.stack : res.rows[0].message)
+        });
         
 
     }
