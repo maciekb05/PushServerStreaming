@@ -8,20 +8,18 @@ class SQLdb extends Database{
     constructor(dbString, eventSchema){
         super(dbString, eventSchema);
         this.client = new pg.Client(dbString);
-        this.Connect();
-        this.RegistrySchema();
-
-
+        
     }
 
     Connect() {
         this.client.connect()
             .then(() => {
                 console.log("Connected to SQL");
+                this.RegistrySchema();
             })
             .catch(err => {
                 console.error('Database connection error');
-            })
+            });
     }
 
     RegistrySchema() {

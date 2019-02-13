@@ -23,13 +23,18 @@ class App extends Component {
     }
 
     addHistoryToState(history) {
-        this.setState({
-            advertisements: this.state.advertisements.concat(history)
-        });
+        console.log("hiostia")
+        console.log(history);
+        if ( history ) {
+            this.setState({
+                advertisements: this.state.advertisements.concat(history)
+            });
+        }
     }
 
     renderAdvertisements() {
-        return this.state.advertisements.map(advertisement => {
+        console.log(this.state.advertisements)
+        return this.state.advertisements ? this.state.advertisements.map(advertisement => {
             return (
                 <Advertisement
                     key = {advertisement.description + advertisement.additionDate}
@@ -44,7 +49,7 @@ class App extends Component {
                     subject = {advertisement.subject}
                 />
             );
-        });
+        }) : null;
     }
     
     createAdvertisement = (data) => {
