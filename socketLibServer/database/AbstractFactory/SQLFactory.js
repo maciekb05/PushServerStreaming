@@ -7,11 +7,11 @@ class SQLFactory extends AbstractFactory {
         super();
     }
 
-    createDB (dbString, eventSchema) {
+    createDB(dbString, eventSchema) {
         return new SQLDB(dbString, eventSchema);
     }
 
-    createDAO (database) {
+    createDAO(database) {
         return new SQLDAO(database);
     }
 }

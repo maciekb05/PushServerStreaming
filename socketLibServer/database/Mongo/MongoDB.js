@@ -11,10 +11,10 @@ class MongoDB extends Database {
 
     async Connect() {
         try {
-            await mongoose.connect(this.dbString,{useNewUrlParser: true});
+            await mongoose.connect(this.dbString, {useNewUrlParser: true});
             console.log("Connected to MongoDB");
             await this._RegisterNewSchema();
-        } catch(err) {
+        } catch (err) {
             console.error('Database connection error');
         }
     }
@@ -22,7 +22,7 @@ class MongoDB extends Database {
     async _RegisterNewSchema() {
         try {
             await Object.keys(this.eventSchema).forEach(async key => {
-                await DynamicSchema.addSchemaField(Event,key,{type: this.eventSchema[key]});
+                await DynamicSchema.addSchemaField(Event, key, {type: this.eventSchema[key]});
             });
             console.log("Mongo Schema registred");
         } catch (e) {
@@ -31,4 +31,4 @@ class MongoDB extends Database {
     }
 }
 
-module.exports =  MongoDB;
+module.exports = MongoDB;

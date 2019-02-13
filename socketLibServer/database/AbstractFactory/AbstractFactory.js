@@ -10,11 +10,11 @@ class AbstractFactory {
         }
     }
 
-    createDB (dbString, eventSchema) {
+    createDB(dbString, eventSchema) {
         throw new Error("Not implemented");
     }
 
-    createDAO (database) {
+    createDAO(database) {
         throw new Error("Not implemented");
     }
 }

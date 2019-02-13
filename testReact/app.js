@@ -9,24 +9,19 @@ const app = express();
 app.use(index);
 
 const server = http.createServer(app);
-/*schemat
-{
-        title: "string",
-        innePole: "numer"
-}*/
 
 lib.initializeSocket(server,
-                    "mongodb://admin:admin123@ds223015.mlab.com:23015/mrowisko",
-                    {
-                        description: "String",
-                        additionDate: "String",
-                        expirationDate: "String",
-                        email: "String",
-                        username: "String",
-                        location: "String",
-                        phone: "String",
-                        subject: "String"
-                    });
+    "mongodb://admin:admin123@ds135156.mlab.com:35156/server_push_dev",
+    {
+        description: "String",
+        additionDate: "String",
+        expirationDate: "String",
+        email: "String",
+        username: "String",
+        location: "String",
+        phone: "String",
+        subject: "String"
+    });
 
 // lib.initializeSocket(server,
 //     "postgres://bvdxjgrk:hs9ZiISsjYQZobeeJ-zNHyPfRYIWc5Wy@manny.db.elephantsql.com:5432/bvdxjgrk",
@@ -41,7 +36,7 @@ lib.initializeSocket(server,
 //         subject: "varchar(255)"
 //     });
 
-lib.onEvent("advertisement",data => {
+lib.onEvent("advertisement", data => {
     lib.notifyEveryone("advertisement", data);
 });
 

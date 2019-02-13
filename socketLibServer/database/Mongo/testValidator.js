@@ -5,7 +5,7 @@ console.log(validate({
     nazwisko: "String",
     wiek: "Integer",
     dziecko: "Boolean",
-    aaa: "Dupa"
+    aaa: "XDDDDDD"
 }));
 
 console.log(validate({

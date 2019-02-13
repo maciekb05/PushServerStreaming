@@ -13,11 +13,11 @@ class Database {
     }
     
     Connect() {
-        throw new Error('You have to implement the method to connect');
+        throw new Error("Not implemented");
     }
 
     _RegisterNewSchema() {
-        throw new Error('You have to implement this method');
+        throw new Error("Not implemented");
     }
 }
 

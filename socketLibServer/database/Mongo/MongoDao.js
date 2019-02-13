@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Events = mongoose.model('events');
 const EventObjectDao = require('../EventObjectDao');
 
-class MongoDao extends EventObjectDao{
+class MongoDao extends EventObjectDao {
     constructor(database) {
         super(database);
     }

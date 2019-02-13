@@ -3,11 +3,11 @@ class EventObjectDao {
         this._database = database;
     }
 
-    FindEvents(){
+    FindEvents() {
         throw Error("You have to implement this method");
     }
 
-    AddEvent(Event){
+    AddEvent(Event) {
         throw Error("You have to implement this method");
     }
 }

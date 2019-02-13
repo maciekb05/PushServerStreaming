@@ -16,7 +16,7 @@ class Facade {
             this.factory = new SQLFactory();
         }
 
-        this.dataBase = this.factory.createDB(dbString,eventSchema);
+        this.dataBase = this.factory.createDB(dbString, eventSchema);
         this.dataBase.Connect();
 
         this.dao = this.factory.createDAO(this.dataBase);
@@ -26,7 +26,7 @@ class Facade {
         this.io.emit(eventName, eventObject);
 
         //tutaj moze trzeba try'owac
-        
+
         this.dao.AddEvent(eventObject);
     }
 
@@ -39,7 +39,7 @@ class Facade {
             });
             console.log("wysylam historie");
             console.log(history);
-            socket.emit('history',history);
+            socket.emit('history', history);
         });
 
     }

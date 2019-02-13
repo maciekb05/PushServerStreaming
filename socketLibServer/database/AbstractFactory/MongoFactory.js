@@ -8,15 +8,15 @@ class MongoFactory extends AbstractFactory {
         super();
     }
 
-    createDB (dbString, eventSchema) {
-        if(validateMongoSchema(eventSchema)){
+    createDB(dbString, eventSchema) {
+        if (validateMongoSchema(eventSchema)) {
             return new MongoDB(dbString, eventSchema);
         } else {
             throw new Error("Invalid schema");
         }
     }
 
-    createDAO (database) {
+    createDAO(database) {
         return new MongoDAO(database);
     }
 }
