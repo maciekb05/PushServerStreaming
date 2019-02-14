@@ -38,13 +38,29 @@
 	
 	
 	\section{Jak korzystać z biblioteki socket-lib}
-	
+	\begin{enumerate}
+		\item Zainstaluj paczkę socket-lib:
+		\begin{lstlisting}
+			npm i @maciekb05/socket-lib
+		\end{lstlisting}
+		\item Zainicjalizuj socket wcześniej utworzonym serwerem
+		\item Połącz się z bazą danych. Musisz podać
+		URI twojej bazy danych oraz schemat (tabelki????) 
+		\item Zdefiniuj callback do funkcji onEvent()
+	\end{enumerate}
 	\section{Jak korzystać z biblioteki socket-lib-client}
-	
+	\begin{enumerate}
+		\item Zainstaluj paczkę socket-lib:
+		\begin{lstlisting}
+		npm i @maciekb05/socket-lib-client
+		\end{lstlisting}
+		\item Zainicjalizuj socket endpointem wcześniej utworzonego serwera
+		\item Zdefiniuj callback do funkcji onEvent() dla zdarzeń
+	\end{enumerate}
 	\section{Wykorzystane wzorce projektowe}
 	\subsection{Fasada}
 	
-	Korzystamy z niej aby dostarczyć klientowi uproszczony interfejs biblioteki socket-io
+	Zastosowaliśmy ją w obu bibliotekach, aby dostarczyć klientom uproszczony interfejs. Ukrywa ona złożoność zarówno naszej implementacji jak i biblioteki socket-io.
 	
 	\begin{figure}[H] 
 		\centering
@@ -64,10 +80,8 @@
 	
 	\subsection{Query Builder}
 	
-	Obiekt reprezentuje zapytanie kierowane do bazy
-	danych. Generuje zapytanie SQL, bazując na klasach i polach
-	klas.Uzyskaliśmy dzięki niemu niezależność aplikacji od schematu
-	bazy danych. Dodatkowo pozwala on na korzystanie z różnych motorów baz danych.
+	Obiekt reprezentuje zapytanie kierowane do bazy danych. Generuje zapytanie SQL, bazując na
+	klasach i polach klas. Uzyskaliśmy dzięki niemu niezależność aplikacji od schematu bazy danych.	Pozwala na konstrukcje kwerendy krok po kroku, łatwiejsze budowanie dynamicznych zapytań o obiekty których specyfikacji nie znamy.
 	
 	\begin{figure}[H] 
 		\centering
@@ -87,17 +101,19 @@
 	
 	\subsection{Fabryka Abstrakcyjna}
 	
-	Wzorzec wymusza zależności pomiędzy	klasami konkretnymi – zależności obiektów w rodzinie co w naszym przypadku jest pożądane, bo otrzymamyy obiekty ze sobą kompatybilne.
+	Wzorzec wymusza zależności pomiędzy klasami konkretnymi – zależności obiektów w rodzinie co w naszym przypadku jest pożądane, bo otrzymamy obiekty ze sobą kompatybilne. Dodatkowo ułatwi nam to w przyszłości wprowadzanie nowych wariantów baz danych.
 	
 	\begin{figure}[H] 
 		\centering
 		\begin{tabular}{c}
-			\includegraphics[width=.95\textwidth]{abstractfactory}
+			\includegraphics[width=.95\textwidth]{factory}
 		\end{tabular} 
 		\caption{Diagram klas dla fabryki abstrakcyjnej}
 	\end{figure}
 	
 	\subsection{Singleton}
+	
+	Singleton użyliśmy w dwóch klasach. Dla fabryki abstrakcyjnej, żeby nie stworzyć innych fabryk i nie mieć różnych systemów bazodanowowych w aplikacji. Dla klasy bazy danych po to, aby	nawiązać tylko jedno połączenie z bazą.
 	
 	\begin{figure}[H] 
 		\centering
@@ -108,6 +124,9 @@
 	\end{figure}
 	
 	\subsection{Maszyna Stanowa}
+	
+	Wzorzec state gwarantuje, że jeżeli klient użyje naszych funkcji w nieprawidłowy sposób zostanie o tym poinformowany. 
+	Dzięki użyciu tego wzorca nie trzeba korzystać z wielu instrukcji warunkowych, kod jest bardziej czytelny, a te same metody w zależności od tego w jakim stanie jest moduł działają w inny sposób. Zabezpiecza on w naszym przypadku kolejność wykonywania działań, czyli gdy nasza aplikacja jest Niezainicjowana, nie pozwala, aby ktoś uruchomił funkcję korzystającą z socket’a, bo jeszcze nie jest on zainicjalizowany, ani podłączony do bazy danych.
 	
 	\begin{figure}[H] 
 		\centering
@@ -126,6 +145,8 @@
 	\end{figure}
 
 	\subsection{Dao Factory}
+	
+	Jest odpowiedzialne za dostep do danych w bazie danych. Obsługuje operacje CRUD dla danego	obiektu. Separuje logikę dostępu do bazy danych.
 	
 	\begin{figure}[H] 
 		\centering
