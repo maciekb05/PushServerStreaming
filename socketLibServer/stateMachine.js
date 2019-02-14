@@ -48,6 +48,8 @@ class Initialized extends State {
             this.context.factory = new MongoFactory();
         } else if (isPostgresString(dbString)) {
             this.context.factory = new SQLFactory();
+        } else {
+            throw new Error("This database is not supported");
         }
 
         this.context.dataBase = this.context.factory.createDB(dbString, eventSchema);
