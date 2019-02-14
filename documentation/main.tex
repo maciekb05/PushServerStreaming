@@ -45,9 +45,18 @@
 		\end{lstlisting}
 		\item Zainicjalizuj socket wcześniej utworzonym serwerem
 		\item Połącz się z bazą danych. Musisz podać
-		URI twojej bazy danych oraz schemat (tabelki????) 
+		URI twojej bazy danych oraz schemat modelu 
 		\item Zdefiniuj callback do funkcji onEvent()
 	\end{enumerate}
+
+	\begin{figure}[H] 
+		\centering
+		\begin{tabular}{c}
+			\includegraphics[width=.99\textwidth]{socket-lib}
+		\end{tabular} 
+		\caption{Przykład korzystania z biblioteki socket-lib}
+	\end{figure}
+
 	\section{Jak korzystać z biblioteki socket-lib-client}
 	\begin{enumerate}
 		\item Zainstaluj paczkę socket-lib:
@@ -57,6 +66,15 @@
 		\item Zainicjalizuj socket endpointem wcześniej utworzonego serwera
 		\item Zdefiniuj callback do funkcji onEvent() dla zdarzeń
 	\end{enumerate}
+
+	\begin{figure}[H] 
+		\centering
+		\begin{tabular}{c}
+			\includegraphics[width=.99\textwidth]{socket-lib-client}
+		\end{tabular} 
+		\caption{Przykład korzystania z biblioteki socket-lib-client}
+	\end{figure}
+
 	\section{Wykorzystane wzorce projektowe}
 	\subsection{Fasada}
 	

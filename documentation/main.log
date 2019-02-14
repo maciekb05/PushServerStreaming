@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.10.18)  14 FEB 2019 08:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2017.10.18)  14 FEB 2019 08:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -709,101 +709,126 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 {c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo-agh.jpg>
 ]
-<Fasada.jpg, id=15, 327.624pt x 450.483pt>
+<socket-lib.jpg, id=15, 587.796pt x 363.759pt>
+File: socket-lib.jpg Graphic file (type jpg)
+<use socket-lib.jpg>
+Package pdftex.def Info: socket-lib.jpg  used on input line 55. on input line 5
+5.
+Package pdftex.def Info: Requested size: 422.52577pt x 261.48444pt on input lin
+e 55.
+
+Overfull \hbox (7.73442pt too wide) in paragraph at lines 54--57
+ [][] 
+ []
+
+[2]
+<socket-lib-client.jpg, id=22, 517.935pt x 171.039pt>
+File: socket-lib-client.jpg Graphic file (type jpg)
+<use socket-lib-client.jpg>
+Package pdftex.def Info: socket-lib-client.jpg  used on input line 73. on input
+ line 73.
+Package pdftex.def Info: Requested size: 422.52577pt x 139.53778pt on input lin
+e 73.
+
+Overfull \hbox (7.73442pt too wide) in paragraph at lines 72--75
+ [][] 
+ []
+
+<Fasada.jpg, id=23, 327.624pt x 450.483pt>
 File: Fasada.jpg Graphic file (type jpg)
 <use Fasada.jpg>
-Package pdftex.def Info: Fasada.jpg  used on input line 68. on input line 68.
+Package pdftex.def Info: Fasada.jpg  used on input line 86. on input line 86.
 Package pdftex.def Info: Requested size: 320.0935pt x 440.16429pt on input line
- 68.
- [2]
-<Fasadaclass.jpg, id=22, 638.98724pt x 354.123pt>
+ 86.
+[3 <./socket-lib.jpg> <./socket-lib-client.jpg>]
+<Fasadaclass.jpg, id=27, 638.98724pt x 354.123pt>
 File: Fasadaclass.jpg Graphic file (type jpg)
 <use Fasadaclass.jpg>
-Package pdftex.def Info: Fasadaclass.jpg  used on input line 76. on input line 
-76.
+Package pdftex.def Info: Fasadaclass.jpg  used on input line 94. on input line 
+94.
 Package pdftex.def Info: Requested size: 320.0935pt x 177.39607pt on input line
- 76.
- [3 <./Fasada.jpg>]
-<insertbuilder.jpg, id=26, 569.7285pt x 460.119pt>
+ 94.
+ [4 <./Fasada.jpg>]
+<insertbuilder.jpg, id=31, 569.7285pt x 460.119pt>
 File: insertbuilder.jpg Graphic file (type jpg)
 <use insertbuilder.jpg>
-Package pdftex.def Info: insertbuilder.jpg  used on input line 89. on input lin
-e 89.
+Package pdftex.def Info: insertbuilder.jpg  used on input line 107. on input li
+ne 107.
 Package pdftex.def Info: Requested size: 422.52577pt x 341.24098pt on input lin
-e 89.
+e 107.
 
-Overfull \hbox (7.73442pt too wide) in paragraph at lines 88--91
+Overfull \hbox (7.73442pt too wide) in paragraph at lines 106--109
  [][] 
  []
 
-<querybuilder.jpg, id=27, 717.27975pt x 492.03825pt>
+<querybuilder.jpg, id=32, 717.27975pt x 492.03825pt>
 File: querybuilder.jpg Graphic file (type jpg)
 <use querybuilder.jpg>
-Package pdftex.def Info: querybuilder.jpg  used on input line 97. on input line
- 97.
+Package pdftex.def Info: querybuilder.jpg  used on input line 115. on input lin
+e 115.
 Package pdftex.def Info: Requested size: 422.52577pt x 289.84958pt on input lin
-e 97.
+e 115.
 
-Overfull \hbox (7.73442pt too wide) in paragraph at lines 96--99
+Overfull \hbox (7.73442pt too wide) in paragraph at lines 114--117
  [][] 
  []
 
-[4 <./Fasadaclass.jpg> <./insertbuilder.jpg>]
-<factory.jpg, id=31, 487.22025pt x 296.307pt>
+[5 <./Fasadaclass.jpg> <./insertbuilder.jpg>]
+<factory.jpg, id=36, 487.22025pt x 296.307pt>
 File: factory.jpg Graphic file (type jpg)
 <use factory.jpg>
-Package pdftex.def Info: factory.jpg  used on input line 109. on input line 109
+Package pdftex.def Info: factory.jpg  used on input line 127. on input line 127
 .
 Package pdftex.def Info: Requested size: 405.45047pt x 246.57677pt on input lin
-e 109.
- [5 <./querybuilder.jpg> <./factory.jpg>]
-<singleton.jpg, id=35, 289.68225pt x 363.759pt>
+e 127.
+ [6 <./querybuilder.jpg> <./factory.jpg>]
+<singleton.jpg, id=40, 289.68225pt x 363.759pt>
 File: singleton.jpg Graphic file (type jpg)
 <use singleton.jpg>
-Package pdftex.def Info: singleton.jpg  used on input line 121. on input line 1
-21.
+Package pdftex.def Info: singleton.jpg  used on input line 139. on input line 1
+39.
 Package pdftex.def Info: Requested size: 320.0935pt x 401.97891pt on input line
- 121.
-<statemachine.jpg, id=36, 489.62926pt x 436.029pt>
+ 139.
+<statemachine.jpg, id=41, 489.62926pt x 436.029pt>
 File: statemachine.jpg Graphic file (type jpg)
 <use statemachine.jpg>
-Package pdftex.def Info: statemachine.jpg  used on input line 134. on input lin
-e 134.
+Package pdftex.def Info: statemachine.jpg  used on input line 152. on input lin
+e 152.
 Package pdftex.def Info: Requested size: 422.52577pt x 376.26836pt on input lin
-e 134.
+e 152.
 
-Overfull \hbox (7.73442pt too wide) in paragraph at lines 133--136
+Overfull \hbox (7.73442pt too wide) in paragraph at lines 151--154
  [][] 
  []
 
-[6 <./singleton.jpg>]
-<statemachineclass.jpg, id=40, 439.6425pt x 340.27126pt>
+[7 <./singleton.jpg>]
+<statemachineclass.jpg, id=46, 439.6425pt x 340.27126pt>
 File: statemachineclass.jpg Graphic file (type jpg)
 <use statemachineclass.jpg>
-Package pdftex.def Info: statemachineclass.jpg  used on input line 142. on inpu
-t line 142.
+Package pdftex.def Info: statemachineclass.jpg  used on input line 160. on inpu
+t line 160.
 Package pdftex.def Info: Requested size: 422.52577pt x 327.03052pt on input lin
-e 142.
+e 160.
 
-Overfull \hbox (7.73442pt too wide) in paragraph at lines 141--144
+Overfull \hbox (7.73442pt too wide) in paragraph at lines 159--162
  [][] 
  []
 
-[7 <./statemachine.jpg>]
-<mongodao.jpg, id=45, 295.1025pt x 451.08525pt>
+[8 <./statemachine.jpg>]
+<mongodao.jpg, id=50, 295.1025pt x 451.08525pt>
 File: mongodao.jpg Graphic file (type jpg)
 <use mongodao.jpg>
-Package pdftex.def Info: mongodao.jpg  used on input line 154. on input line 15
-4.
+Package pdftex.def Info: mongodao.jpg  used on input line 172. on input line 17
+2.
 Package pdftex.def Info: Requested size: 320.0935pt x 489.29855pt on input line
- 154.
- [8 <./statemachineclass.jpg>] [9 <./mongodao.jpg>]
+ 172.
+ [9 <./statemachineclass.jpg>] [10 <./mongodao.jpg>]
 (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 6326 strings out of 492990
- 85091 string characters out of 6136333
- 167270 words of memory out of 5000000
- 9763 multiletter control sequences out of 15000+600000
+ 6336 strings out of 492990
+ 85304 string characters out of 6136333
+ 165270 words of memory out of 5000000
+ 9771 multiletter control sequences out of 15000+600000
  12424 words of font info for 26 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,12n,45p,594b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -816,10 +841,10 @@ ype1/public/cm-super/sfcc1200.pfb><c:/texlive/2017/texmf-dist/fonts/type1/publi
 c/cm-super/sfcc1440.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super
 /sfrm1000.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.
 pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfxc1728.pfb>
-Output written on main.pdf (9 pages, 628329 bytes).
+Output written on main.pdf (10 pages, 715059 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 88 PDF objects out of 1000 (max. 8388607)
+ 53 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 67 words of extra memory for PDF output out of 10000 (max. 10000000)
 
